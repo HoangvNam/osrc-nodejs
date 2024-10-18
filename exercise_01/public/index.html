@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login Form</h2>
+    <img src="avatar.jpg" alt="Avatar" id="avatar">
+    <form id="loginForm">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required placeholder="Enter username">
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required placeholder="Enter password">
+
+      <button type="submit">Login</button>
+      <input type="checkbox" name="remember" id="remember"> Remember me
+
+      <button type="button" onclick="window.location.reload()">Cancel</button>
+    </form>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    loginForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const username = loginForm.username.value;
+      const password = loginForm.password.value;
+
+      const response = await fetch('/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+
+      const result = await response.json();
+      alert(result.message);
+    });
+  </script>
+</body>
+</html>
