@@ -1,0 +1,30 @@
+<div class="container mt-5">
+    <h3 class="text-center mb-4">Edit Task</h3>
+    <form action="/edit-task/{{task._id}}" method="POST">
+        <div class="mb-3">
+            <label for="title" class="form-label">Tiêu đề</label>
+            <input type="text" class="form-control" id="title" name="title" value="{{task.title}}" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Mô tả</label>
+            <textarea class="form-control" id="description" name="description" rows="3">{{task.description}}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="status" class="form-label">Trạng thái</label>
+            <select class="form-select" id="status" name="status" required>
+                <option value="New" {{#if (eq task.status "New")}}selected{{/if}}>Mới</option>
+                <option value="Pending" {{#if (eq task.status "Pending")}}selected{{/if}}>Đang chờ</option>
+                <option value="Done" {{#if (eq task.status "Done")}}selected{{/if}}>Hoàn thành</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="dueDate" class="form-label">Ngày hoàn thành</label>
+            <input type="date" class="form-control" id="dueDate" name="dueDate" value="{{formatDate task.dueDate}}">
+        </div>
+        <div class="mb-3">
+            <label for="score" class="form-label">Điểm</label>
+            <input type="number" class="form-control" id="score" name="score" value="{{task.taskPoint}}">
+        </div>
+        <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+    </form>
+</div>

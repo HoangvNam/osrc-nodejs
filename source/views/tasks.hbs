@@ -1,0 +1,21 @@
+<div class="container mt-5"></div>
+<h3 class="text-center mb-4 task-list-title">Tasks</h3>
+<ul class="list-group task-list">
+    {{#each tasks}}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+            <strong>{{this.title}}</strong> - {{this.description}} <br>
+            Trạng thái: {{this.status}} | Hoàn thành: {{formatDate this.dueDate}} | Điểm: {{this.taskPoint}}
+        </div>
+        <div class="d-flex ms-auto">
+            <a href="/edit-task/{{this._id}}" class="btn btn-warning btn-sm me-2">Edit</a>
+            <form action="/delete-task/{{this._id}}" method="POST" class="delete-form">
+                <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
+            </form>
+        </div>
+    </li>
+    {{else}}
+    <li class="list-group-item text-center">Chưa có công việc nào.</li>
+    {{/each}}
+</ul>
+</div>

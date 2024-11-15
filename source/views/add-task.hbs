@@ -1,0 +1,41 @@
+<div class="container mt-5">
+  <h3 class="text-center mb-4 task-list-title">Add Task</h3>
+  <form action="/add-task" method="POST" class="task-form border p-4 rounded shadow-sm bg-light mb-5">
+    <div class="mb-3">
+      <label for="title" class="form-label">Tiêu đề:</label>
+      <input type="text" id="title" name="title" required class="form-control" placeholder="Nhập tiêu đề công việc">
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Mô tả:</label>
+      <textarea id="description" name="description" required class="form-control" rows="3"
+        placeholder="Mô tả công việc"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="status" class="form-label">Trạng thái:</label>
+      <select id="status" name="status" class="form-select">
+        <option value="New" selected>Mới</option>
+        <option value="Pending">Đang chờ</option>
+        <option value="Done">Hoàn thành</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="dueDate" class="form-label">Ngày hoàn thành:</label>
+      <input type="date" id="dueDate" name="dueDate" required class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label for="taskPoint" class="form-label">Điểm nhiệm vụ:</label>
+      <input type="number" id="taskPoint" name="taskPoint" class="form-control" min="0" value="0">
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100 mb-3">Thêm Công Việc</button>
+  </form>
+
+  <!-- Nút hiển thị tất cả các task -->
+  <form action="/tasks" method="GET" class="text-center">
+    <button type="submit" class="btn btn-primary w-100 mb-3">Hiển thị tất cả các công việc</button>
+  </form>
+</div>
