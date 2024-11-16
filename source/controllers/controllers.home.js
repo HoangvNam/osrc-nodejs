@@ -1,5 +1,5 @@
 export class HomePageController {
     static showHomePage(req, res) {
-        res.render("homepage", { title: "HomePage" })
+        res.render("add-booking", { title: "HomePage" })
     }
 }
