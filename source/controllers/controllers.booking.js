@@ -71,7 +71,7 @@ export class BookingController {
             const updatedBooking = await Booking.findByIdAndUpdate(
                 id, 
                 { status: "Cancelled" },
-                { new: true }
+                
             )
 
             // Nếu không tìm thấy booking

@@ -20,11 +20,11 @@
         <form action="/delete-booking/{{this._id}}" method="POST" class="delete-form me-2">
           <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
         </form>
-        {{#ifCond this.status "Pending"}}
+        {{!-- {{#ifCond this.status "Pending"}} --}}
         <form action="/cancel-booking/{{this._id}}" method="POST">
           <button type="submit" class="btn btn-secondary btn-sm">Hủy</button>
         </form>
-        {{/ifCond}}
+        {{!-- {{/ifCond}} --}}
       </div>
     </li>
     {{else}}
