@@ -1,0 +1,57 @@
+<div class="container mt-5">
+  <h3 class="text-center mb-4 task-list-title">Edit Booking</h3>
+  <form action="/edit-booking/{{booking._id}}" method="POST" class="task-form border p-4 rounded shadow-sm bg-light mb-5">
+    <div class="mb-3">
+      <label for="customerName" class="form-label">Tên khách hàng:</label>
+      <input
+        type="text"
+        id="customerName"
+        name="customerName"
+        value="{{booking.customerName}}"
+        required
+        class="form-control"
+        placeholder="Nhập tên khách hàng"
+      >
+    </div>
+
+    <div class="mb-3">
+      <label for="date" class="form-label">Ngày đặt:</label>
+      <input
+        type="date"
+        id="date"
+        name="date"
+        value="{{booking.date}}"
+        required
+        class="form-control"
+      >
+    </div>
+
+    <div class="mb-3">
+      <label for="time" class="form-label">Giờ đặt:</label>
+      <input
+        type="time"
+        id="time"
+        name="time"
+        value="{{booking.time}}"
+        required
+        class="form-control"
+      >
+    </div>
+
+    <div class="mb-3">
+      <label for="status" class="form-label">Trạng thái:</label>
+      <select id="status" name="status" class="form-select">
+        <option value="Pending" {{#ifCond booking.status "Pending"}}selected{{/ifCond}}>Pending</option>
+        <option value="Confirmed" {{#ifCond booking.status "Confirmed"}}selected{{/ifCond}}>Confirmed</option>
+        <option value="Cancelled" {{#ifCond booking.status "Cancelled"}}selected{{/ifCond}}>Cancelled</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100 mb-3">Cập nhật đặt chỗ</button>
+  </form>
+
+  <!-- Nút quay lại danh sách đặt chỗ -->
+  <form action="/bookings" method="GET" class="text-center">
+    <button type="submit" class="btn btn-secondary w-100">Quay lại danh sách đặt chỗ</button>
+  </form>
+</div>

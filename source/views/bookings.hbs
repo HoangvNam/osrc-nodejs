@@ -1,0 +1,34 @@
+<div class="container mt-5">
+  <h3 class="text-center mb-4 task-list-title">Bookings</h3>
+  <ul class="list-group task-list">
+    {{#each bookings}}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <strong>Khách hàng: {{this.customerName}}</strong> <br>
+        ID: {{this._id}} <br>
+        Ngày đặt: {{formatDate this.date}} | Giờ: {{this.time}} <br>
+        Trạng thái: 
+        <span class="badge 
+          {{#ifCond this.status "Pending"}}bg-warning text-dark{{/ifCond}} 
+          {{#ifCond this.status "Confirmed"}}bg-success{{/ifCond}} 
+          {{#ifCond this.status "Cancelled"}}bg-danger{{/ifCond}}">
+          {{this.status}}
+        </span>
+      </div>
+      <div class="d-flex ms-auto">
+        <a href="/edit-booking/{{this._id}}" class="btn btn-warning btn-sm me-2">Edit</a>
+        <form action="/delete-booking/{{this._id}}" method="POST" class="delete-form me-2">
+          <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
+        </form>
+        {{#ifCond this.status "Pending"}}
+        <form action="/cancel-booking/{{this._id}}" method="POST">
+          <button type="submit" class="btn btn-secondary btn-sm">Hủy</button>
+        </form>
+        {{/ifCond}}
+      </div>
+    </li>
+    {{else}}
+    <li class="list-group-item text-center">Chưa có đặt chỗ nào.</li>
+    {{/each}}
+  </ul>
+</div>
